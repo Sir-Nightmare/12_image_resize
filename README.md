@@ -1,6 +1,6 @@
 # Image Resizer
-This script changes the input image resolution according to the input parameters.
-Original image will not be changed. A new one wil be created. 
+This script changes the input image resolution according to the input parameters.  
+Original image will not be changed. A new one wil be created.   
 The script can work with jpg, png and bmp.
 
 
