@@ -14,16 +14,16 @@ def get_args():
     return parser.parse_args()
 
 
-def get_new_image_size(width, height, scale):
+def get_new_image_size(sourse_width, source_height, new_width, new_height, scale):
     if scale:
-        return int(image.width * scale), int(image.height * scale)
-    if not height:
-        scale = width / image.width
-        return width, int(image.height * scale)
-    if not width:
-        scale = height / image.height
-        return int(image.width * scale), height
-    return width, height
+        return int(sourse_width * scale), int(source_height * scale)
+    if not new_height:
+        scale = new_width / sourse_width
+        return new_width, int(source_height * scale)
+    if not new_width:
+        scale = new_height / source_height
+        return int(sourse_width * scale), new_height
+    return new_width, new_height
 
 
 def is_proportions_match(sourse_width, source_height, new_width, new_height):
@@ -51,7 +51,8 @@ if __name__ == '__main__':
         exit('You have to specify the scale or height or width of result image.')
     image = Image.open(args.path)
     sourse_width, source_height = image.size
-    new_width, new_height = get_new_image_size(args.width, args.height, args.scale)
+    new_width, new_height = get_new_image_size(sourse_width, source_height, args.width, args.height,
+                                               args.scale)
     if not args.scale and not is_proportions_match(sourse_width, source_height, new_width,
                                                    new_height):
         print('The proportions are not the same as in the original image.')
