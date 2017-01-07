@@ -1,4 +1,6 @@
 # Image Resizer
+This script changes the input image resolution according to the input parameters. 
+The script can work with jpg, png and bmp.
 
 
 ## Usage
@@ -15,10 +17,20 @@ name | type | key |
 **Output** | string | `-o, --output`
 **Help** | string | `-h, --help`
 
-You have to specify scale or width or height. You can also specify width and height together.  
-Note that you can't use both scale and width / height options  
-If output is not specified, output file will be placed at folder with original image with name  `<original_filename>__<width>x<height>.<original_extension>`
+**Notes:**
 
+- You have to specify scale of resizing or width or height of new image. 
+- You can also specify width and height together.  
+- If you specify only width or height, another parameter will be computed to save ratio of original image.
+- You can't use both scale and width / height options  
+- If output is not specified, output file will be placed at folder with original image with name  `<original_filename>__<width>x<height>.<original_extension>`
+
+**Examples:**
+
+```
+python image_resize.py D:\img.jpg  -H 1000 -w 1500 # result: img__1500x1000.jpg at the same folder
+python image_resize.py D:\img.jpg -s 0.5 -o D:\img_foder\new_img.jpg
+```
 
 # Project Goals
 
