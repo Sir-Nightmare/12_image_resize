@@ -28,8 +28,8 @@ def get_new_image_size(source_width, source_height, new_width, new_height, scale
 
 def is_proportion_changed(source_width, source_height, new_width, new_height):
     permissible_error = 0.005
-    proportions = new_width / source_width - new_height / source_height
-    return abs(proportions) > permissible_error
+    proportion_change = new_width / source_width - new_height / source_height
+    return abs(proportion_change) > permissible_error
 
 
 def resize_image(source_image, args):
