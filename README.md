@@ -6,9 +6,9 @@ The script can work with jpg, png and bmp.
 
 ## Usage
 
-- Clone repository: `git clone https://github.com/Sir-Nightmare/12_image_resize.git`  
-- Install necessary module **Pillow** `pip3 install -r requirements.txt` 
-- Launch the script: `python image_resize.py <path_to_original_file> <options>` 
+- **Clone repository:** `git clone https://github.com/Sir-Nightmare/12_image_resize.git`  
+- **Install necessary module _Pillow_:** `pip3 install -r requirements.txt` 
+- **Launch the script:** `python image_resize.py <path_to_original_file> <options>` 
 
 **Options:**
 
