@@ -14,7 +14,7 @@ def get_args():
     return parser.parse_args()
 
 
-def get_new_image_size(source_width, source_height, new_width, new_height, scale):
+def get_new_image_size(source_width, source_height, new_width=None, new_height=None, scale=None):
     if scale:
         return int(source_width * scale), int(source_height * scale)
     if not new_height:
@@ -32,10 +32,9 @@ def is_proportion_changed(source_width, source_height, new_width, new_height):
     return abs(proportion_change) > permissible_error
 
 
-def resize_image(source_image, args):
+def resize_image(source_image, width=None, height=None, scale=None):
     source_width, source_height = source_image.size
-    new_width, new_height = get_new_image_size(source_width, source_height, args.width, args.height,
-                                               args.scale)
+    new_width, new_height = get_new_image_size(source_width, source_height, width, height, scale)
     is_ratio_changed = is_proportion_changed(source_width, source_height, new_width, new_height)
     new_image = source_image.resize((new_width, new_height), Image.ANTIALIAS)
     return new_image, is_ratio_changed
@@ -59,9 +58,8 @@ if __name__ == '__main__':
     if not (args.scale or args.width or args.height):
         exit('You have to specify the scale or height or width of result image.')
     source_image = Image.open(args.path)
-    new_image, is_ratio_changed = resize_image(source_image, args)
+    new_image, is_ratio_changed = resize_image(source_image, args.width, args.height, args.scale)
     if is_ratio_changed:
         print('The proportions are not the same as in the original image.')
     save_new_image(args.output, args.path, new_image)
     print('The image was resized successfully!')
-
