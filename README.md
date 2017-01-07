@@ -1,5 +1,6 @@
 # Image Resizer
-This script changes the input image resolution according to the input parameters. 
+This script changes the input image resolution according to the input parameters.
+Original image will not be changed. A new wil be created. 
 The script can work with jpg, png and bmp.
 
 
@@ -9,19 +10,19 @@ The script can work with jpg, png and bmp.
 
 **Options:**
 
-name | type | key |
---- | --- | --- |
-**Scale** | float | `-s, --scale`
-**Width** | int | `-w, --width`
-**Height** | int | `-H, --height`
-**Output** | string | `-o, --output`
-**Help** | string | `-h, --help`
+name | type | key | desription
+--- | --- | --- | ---|
+**Scale** | float | `-s, --scale`| Scale of resizing (can be < 1)
+**Width** | int | `-w, --width`| Width of new image
+**Height** | int | `-H, --height`| Heght of new image
+**Output** | string | `-o, --output`| Output path (with name and extention of the file)
+**Help** | string | `-h, --help`| List of all parameters
 
 **Notes:**
 
-- You have to specify scale of resizing or width or height of new image. 
+- You have to specify scale or width or height. 
 - You can also specify width and height together.  
-- If you specify only width or height, another parameter will be computed to save ratio of original image.
+- If you specify only width or height, second parameter will be computed to keep ratio of original image.
 - You can't use both scale and width / height options  
 - If output is not specified, output file will be placed at folder with original image with name  `<original_filename>__<width>x<height>.<original_extension>`
 
