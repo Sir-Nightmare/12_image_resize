@@ -57,9 +57,11 @@ if __name__ == '__main__':
         exit('You can not specify the width or height and scale at one time.')
     if not (args.scale or args.width or args.height):
         exit('You have to specify the scale or height or width of result image.')
-    source_image = Image.open(args.path)
-    new_image, is_ratio_changed = resize_image(source_image, args.width, args.height, args.scale)
+    width, height, scale = args.width, args.height, args.scale
+    source_path, output = args.path, args.output
+    source_image = Image.open(source_path)
+    new_image, is_ratio_changed = resize_image(source_image, width, height, scale)
     if is_ratio_changed:
         print('The proportions are not the same as in the original image.')
-    save_new_image(args.output, args.path, new_image)
+    save_new_image(output, source_path, new_image)
     print('The image was resized successfully!')
